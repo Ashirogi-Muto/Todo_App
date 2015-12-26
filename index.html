@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html ng-app="todoModule">
+<head>
+	<title>
+			A Simple AngularJS Todo Application.
+	</title>
+	<script src="scripts/angular.js"></script>
+	<script src="scripts/script.js"></script>
+	<link rel="stylesheet" type="text/css" href="css/style.css">
+	
+</head>
+			
+<body ng-controller="todoController">
+	<strong><h1>Todo App</h3></strong>
+	<div class="todo-rem">
+		<center><h2>You have {{getTotalTodos()}} tasks left</h2></center>
+	</div>
+	<div class="list">
+		<div class="container">
+		<ul>
+		<li ng-repeat="todo in todos">
+			<input type="checkbox" ng-model="todo.done"/>
+			<span ng-class="{'done':todo.done}">
+			{{todo.title}}</span>
+		</li>
+		</ul>	
+	</div>
+</div>
+	<div class="add">
+		<form name="frm" ng-submit="addTodo()">
+			<input class="add-input" type="text" placeholder="Add Tasks.." name="newTodo" ng-model="newTodo" required/>
+			 <button class="add-btn" ng-disabled="frm.$invalid"><h2>Add</h2></button>
+			 <center><button class="clear-btn" ng-click="clearCompleted()">Clear Completed</button></center>
+		</form>
+		
+	</div>
+</body>
+</head>
+</html>
